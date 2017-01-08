@@ -1,0 +1,41 @@
+{
+  "name": "humweb/filemanager-module",
+  "type": "module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ryan Shofner",
+      "email": "ryun@humboldtweb.com"
+    }
+  ],
+  "description": "The Laravel Framework.",
+  "keywords": [
+    "framework",
+    "laravel"
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "laravel/framework": "5.3.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "~4.0||~5.0",
+    "squizlabs/php_codesniffer": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Humweb\\Filemanager\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  },
+  "scripts": {
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
