@@ -1,53 +1,63 @@
 <?php
 
-Route::group(['middleware' => 'auth'], function () {
-    //GET
-    Route::get('admin/filemanager', [
-        'middleware' => 'allow.only:filemanager.list',
-        'as'         => 'get.admin.filemanager.index',
-        'uses'       => 'AdminFilemanagerController@getIndex',
+// Show LFM
+Route::group(['prefix' => 'admin/filemanager', 'middleware' => 'auth'], function () {
+
+    // Index
+    //Route::get('/', 'ApiController@getListing');
+
+    Route::get('', [
+        'as'   => 'get.filemanager.index',
+        'uses' => 'MainController@getIndex',
     ]);
 
-    Route::get('admin/filemanager/create/{id?}', [
-        'middleware' => 'allow.only:filemanager.create',
-        'as'         => 'get.admin.filemanager.create',
-        'uses'       => 'AdminFilemanagerController@getCreate',
+    //    // folders
+    Route::any('/newfolder', [
+        'as'   => 'get.filemanager.folder.new',
+        'uses' => 'FolderController@getAddfolder',
+    ]);
+    Route::any('/deletefolder', [
+        'as'   => 'get.filemanager.folder.delete',
+        'uses' => 'FolderController@getDeletefolder',
+    ]);
+    Route::any('/folders', [
+        'as'   => 'get.filemanager.folders',
+        'uses' => 'FolderController@getFolders',
     ]);
 
-    Route::get('admin/filemanager/edit/{id}', [
-        'middleware' => 'allow.only:filemanager.edit',
-        'message'    => 'You don\'t have permission to edit filemanager.',
-        'as'         => 'get.admin.filemanager.edit',
-        'uses'       => 'AdminFilemanagerController@getEdit',
+    Route::any('upload', [
+        'as'   => 'get.filemanager.folders',
+        'uses' => 'UploadController@upload',
     ]);
 
-    Route::get('admin/filemanager/delete/{id}', [
-        'middleware' => 'allow.only:filemanager.delete',
-        'as'         => 'get.admin.filemanager.delete',
-        'uses'       => 'AdminFilemanagerController@getDelete',
-    ]);
-
-    //POST
-    Route::post('admin/filemanager/create/{id?}', [
-        'middleware' => 'allow.only:filemanager.create',
-        'as'         => 'post.admin.filemanager.create',
-        'uses'       => 'AdminFilemanagerController@postCreate',
-    ]);
-
-    Route::post('admin/filemanager/edit/{id}', [
-        'middleware' => 'allow.only:filemanager.edit',
-        'as'         => 'post.admin.filemanager.edit',
-        'uses'       => 'AdminFilemanagerController@postEdit',
-    ]);
-
-    Route::post('admin/filemanager/sort', [
-        'middleware' => 'allow.only:filemanager.edit',
-        'as'         => 'post.admin.filemanager.sort',
-        'uses'       => 'AdminFilemanagerController@postSort'
-    ]);
-});
-
-Route::any('{path?}', [
-    'as'   => 'get.filemanager.index',
-    'uses' => 'FilemanagerController@getIndex',
-]);
+        //    Route::controller('', 'ApiController');
+        //
+        //    // Upload
+        //    Route::any('/upload', 'UploadController@upload');
+        //
+        //    // List images & files
+            Route::get('/jsonimages', 'ItemsController@getImages');
+            Route::get('/jsonfiles', 'ItemsController@getFiles');
+        //
+        //    // folders
+        //    Route::get('/newfolder', 'FolderController@getAddfolder');
+        //    Route::get('/deletefolder', 'FolderController@getDeletefolder');
+        //    Route::get('/folders', 'FolderController@getFolders');
+        //
+        //    // crop
+        //    Route::get('/crop', 'CropController@getCrop');
+        //    Route::get('/cropimage', 'CropController@getCropimage');
+        //
+        //    // rename
+        //    Route::get('/rename', 'RenameController@getRename');
+        //
+        //    // scale/resize
+        //    Route::get('/resize', 'ResizeController@getResize');
+        //    Route::get('/doresize', 'ResizeController@performResize');
+        //
+        //    // download
+        //    Route::get('/download', 'DownloadController@getDownload');
+        //
+        //    // delete
+        //    Route::get('/delete', 'DeleteController@getDelete');
+    });

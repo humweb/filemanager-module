@@ -40,10 +40,13 @@ class ServiceProvider extends ModuleBaseProvider
 
     public function boot()
     {
+        $this->registerProvider(\Intervention\Image\ImageServiceProvider::class);
+
         $this->app['modules']->put('filemanager', $this);
+        $this->publishConfig();
         $this->loadLang();
         $this->loadViews();
-        $this->publishViews();
+        $this->publishAssets();
     }
 
 

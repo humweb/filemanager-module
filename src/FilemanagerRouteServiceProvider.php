@@ -5,7 +5,7 @@ namespace Humweb\Filemanager;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Routing\Router;
 
-class FileManagerRouteServiceProvider extends RouteServiceProvider
+class FilemanagerRouteServiceProvider extends RouteServiceProvider
 {
     /**
      * This namespace is applied to the controller routes in your routes file.
@@ -18,24 +18,13 @@ class FileManagerRouteServiceProvider extends RouteServiceProvider
 
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     */
-    public function boot(Router $router)
-    {
-        parent::boot($router);
-    }
-
-
-    /**
      * Define the routes for the application.
      *
      * @param \Illuminate\Routing\Router $router
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
+        $router->group(['namespace' => $this->namespace, 'middleware' => 'web'], function ($router) {
             require __DIR__.'/routes.php';
         });
     }
