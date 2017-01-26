@@ -3,7 +3,6 @@
 namespace Humweb\Filemanager\Controllers;
 
 use Humweb\Core\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -94,10 +93,10 @@ class ItemsController extends AdminController
 
         if (Input::get('show_list') == 1) {
             return view('filemanager::admin.files-list')
-                       ->with('directories', $directories)
-                       ->with('base', Input::get('base'))
-                       ->with('file_info', $file_info)
-                       ->with('dir_location', $this->file_location);
+                ->with('directories', $directories)
+                ->with('base', Input::get('base'))
+                ->with('file_info', $file_info)
+                ->with('dir_location', $this->file_location);
         } else {
             return View::make('filemanager::admin.files')
                        ->with('files', $files)

@@ -4,10 +4,7 @@ namespace Humweb\Filemanager\Controllers;
 
 use Humweb\Core\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 /**
@@ -56,7 +53,7 @@ class FolderController extends AdminController
         $path = base_path($this->file_location);
 
         if ( ! File::exists($path.'/'.$folder_name)) {
-            File::makeDirectory($path.'/'.$folder_name, $mode = 0777, true, true);
+            File::makeDirectory($path.'/'.$folder_name);
 
             return 'OK';
         } else {

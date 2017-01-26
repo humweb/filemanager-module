@@ -3,13 +3,13 @@
 return [
     'use_package_routes' => true,
 
-    'images_dir'         => 'public/files/imgs/',
-    'images_url'         => '/files/imgs/',
+    'images_dir' => 'public/files/imgs/',
+    'images_url' => '/files/imgs/',
 
-    'files_dir'          => 'public/files/docs/',
-    'files_url'          => '/files/docs/',
+    'files_dir' => 'public/files/docs/',
+    'files_url' => '/files/docs/',
 
-    'file_type_array'         => [
+    'file_type_array' => [
         "pdf"  => "Adobe Acrobat",
         "docx" => "Microsoft Word",
         "docx" => "Microsoft Word",
@@ -24,7 +24,7 @@ return [
         "pptx" => 'Microsoft PowerPoint',
     ],
 
-    'file_icon_array'         => [
+    'file_icon_array' => [
         "pdf"  => "fa-file-pdf-o",
         "docx" => "fa-file-word-o",
         "docx" => "fa-file-word-o",

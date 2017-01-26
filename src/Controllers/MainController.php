@@ -5,7 +5,6 @@ namespace Humweb\Filemanager\Controllers;
 use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Input;
 
 /**
  * Class LfmController.

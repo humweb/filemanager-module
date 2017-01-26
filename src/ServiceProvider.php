@@ -12,31 +12,32 @@ class ServiceProvider extends ModuleBaseProvider
 
         // Users
         'filemanager.create' => [
-            'name' => 'Create files',
+            'name'        => 'Create files',
             'description' => 'Create files.',
         ],
-        'filemanager.edit' => [
-            'name' => 'Edit files',
+        'filemanager.edit'   => [
+            'name'        => 'Edit files',
             'description' => 'Edit files.',
         ],
-        'filemanager.list' => [
-            'name' => 'List files',
+        'filemanager.list'   => [
+            'name'        => 'List files',
             'description' => 'List files.',
         ],
         'filemanager.delete' => [
-            'name' => 'Delete files',
+            'name'        => 'Delete files',
             'description' => 'Delete files.',
         ],
     ];
 
     protected $moduleMeta = [
-        'name' => 'Filemanager',
-        'slug' => 'filemanager',
+        'name'    => 'Filemanager',
+        'slug'    => 'filemanager',
         'version' => '',
-        'author' => '',
-        'email' => '',
+        'author'  => '',
+        'email'   => '',
         'website' => '',
     ];
+
 
     public function boot()
     {
@@ -47,6 +48,7 @@ class ServiceProvider extends ModuleBaseProvider
         $this->loadLang();
         $this->loadViews();
         $this->publishAssets();
+        //dd($this->app['view']);
     }
 
 

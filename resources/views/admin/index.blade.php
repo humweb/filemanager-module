@@ -22,7 +22,8 @@
                         <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 left-nav fill" id="lfm-leftcol">
                             <div id="tree1">
                             </div>
-                            <a href="#!" id="add-folder" class="add-folder btn btn-default btn-xs"><i class="fa fa-plus"></i> {{ trans('filemanager::labels.new_folder') }}</a>
+                            <a href="#!" id="add-folder" class="add-folder btn btn-default btn-xs"><i class="fa fa-plus"></i> {{ trans('filemanager::labels.new_folder') }}
+                            </a>
                         </div>
                         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 right-nav" id="right-nav">
                             <nav class="navbar navbar-default">
@@ -63,7 +64,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="alert alert-danger" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                            </button>
                                             <ul>
                                                 @foreach($errors->all() as $error)
                                                     <li>{{ $error }}</li>
@@ -156,59 +158,59 @@
             $btnReload = $('.reload-files');
 
 
-    $("#upload-btn").click(function () {
+        $("#upload-btn").click(function () {
 
-        $("#uploadForm").ajaxSubmit({
-            beforeSubmit:  function (formData, jqForm, options) {
-                $("#upload-btn").html('<i class="fa fa-refresh fa-spin"></i> Uploading...');
-                return true;
-            },
-            success: function(responseText, statusText, xhr, $form)  {
-                $("#uploadModal").modal('hide');
-                $("#upload-btn").html('Upload File...');
-                if (responseText != "OK"){
-                    notify('File uploaded.');
+            $("#uploadForm").ajaxSubmit({
+                beforeSubmit: function (formData, jqForm, options) {
+                    $("#upload-btn").html('<i class="fa fa-refresh fa-spin"></i> Uploading...');
+                    return true;
+                },
+                success: function (responseText, statusText, xhr, $form) {
+                    $("#uploadModal").modal('hide');
+                    $("#upload-btn").html('Upload File...');
+                    if (responseText != "OK") {
+                        notify('File uploaded.');
+                    }
+                    $("#file_to_upload").val('');
+                    $btnReload.trigger('click');
                 }
-                $("#file_to_upload").val('');
-                $btnReload.trigger('click');
-            }
+            });
+            return false;
         });
-        return false;
-    });
 
-    $win
-        .on('click', 'action-root', function() {
-            $('.folder-item').removeClass('fa-folder-open').addClass('fa-folder');
-            $("#working_dir").val('/');
-            $btnReload.trigger('click');
-        })
+        $win
+            .on('click', 'action-root', function () {
+                $('.folder-item').removeClass('fa-folder-open').addClass('fa-folder');
+                $("#working_dir").val('/');
+                $btnReload.trigger('click');
+            })
 
-        .on('click', '[data-folder]', function(x, y) {
-            var $this = $(this),
-                  id =  $this.data('folder');
-            console.log(id);
-            $('.folder-item').addClass('fa-folder');
-            $('.folder-item').not("#folder_top > i").removeClass('fa-folder-open');
-            if ( ! $this.hasClass('folder-open')) {
-                if ($('#' + id + ' > i').hasClass('fa-folder')) {
-                    $('#' + id + ' > i').not("#folder_top > i").removeClass('fa-folder');
-                    $('#' + id + ' > i').not("#folder_top > i").addClass('fa-folder-open');
-                } else {
-                    $('#' + id + ' > i').removeClass('fa-folder-open');
-                    $('#' + id + ' > i').addClass('fa-folder');
+            .on('click', '[data-folder]', function (x, y) {
+                var $this = $(this),
+                    id = $this.data('folder');
+                console.log(id);
+                $('.folder-item').addClass('fa-folder');
+                $('.folder-item').not("#folder_top > i").removeClass('fa-folder-open');
+                if (!$this.hasClass('folder-open')) {
+                    if ($('#' + id + ' > i').hasClass('fa-folder')) {
+                        $('#' + id + ' > i').not("#folder_top > i").removeClass('fa-folder');
+                        $('#' + id + ' > i').not("#folder_top > i").addClass('fa-folder-open');
+                    } else {
+                        $('#' + id + ' > i').removeClass('fa-folder-open');
+                        $('#' + id + ' > i').addClass('fa-folder');
+                    }
                 }
-            }
-            $("#working_dir").val($('#' + id).data('id'));
-            $btnReload.trigger('click');
-        })
+                $("#working_dir").val($('#' + id).data('id'));
+                $btnReload.trigger('click');
+            })
 
-        .on('click', '[data-download]', function() {
-                location.href = "/admin/filemanager/download?dir="+ $("#working_dir").val() + "&file="+$(this).data('download');
-        })
+            .on('click', '[data-download]', function () {
+                location.href = "/admin/filemanager/download?dir=" + $("#working_dir").val() + "&file=" + $(this).data('download');
+            })
 
-    @if ((Session::has('lfm_type')) && (Session::get('lfm_type') == "Images"))
-        .on('click', '.reload-files', function() {
-                console.log('REALODING!!!');
+            @if ((Session::has('lfm_type')) && (Session::get('lfm_type') == "Images"))
+                .on('click', '.reload-files', function () {
+            console.log('REALODING!!!');
             $.ajax({
                 type: "GET",
                 dataType: "html",
@@ -225,9 +227,9 @@
                 refreshFolders();
             });
         })
-    @else
-        .on('click','.reload-files', function() {
-                console.log('REALODING!!!');
+            @else
+                .on('click', '.reload-files', function () {
+            console.log('REALODING!!!');
             $.ajax({
                 type: "GET",
                 dataType: "html",
@@ -244,201 +246,200 @@
                 refreshFolders();
             });
         })
-    @endif
-    .on('click', '[data-trash]', function() {
-        var x = $(this).data('trash');
-        bootbox.confirm("Are you sure you want to delete this item?", function (result) {
-            if (result == true) {
+            @endif
+            .on('click', '[data-trash]', function () {
+            var x = $(this).data('trash');
+            bootbox.confirm("Are you sure you want to delete this item?", function (result) {
+                if (result == true) {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "text",
+                        url: "/admin/filemanager/delete",
+                        data: {
+                            base: $("#working_dir").val(),
+                            items: x
+                        },
+                        cache: false
+                    }).done(function (data) {
+                        if (data != "OK") {
+                            notify(data);
+                        } else {
+                            loadFiles();
+                            $btnReload.trigger('click');
+                        }
+                    });
+                }
+            });
+        })
+
+            .on('click', '[data-rename]', function () {
+                var x = $(this).data('rename');
+                bootbox.prompt({
+                    title: "Rename to:",
+                    value: x,
+                    callback: function (result) {
+                        if (result === null) {
+                        } else {
+                            $.ajax({
+                                type: "GET",
+                                dataType: "text",
+                                url: "/admin/filemanager/rename",
+                                data: {
+                                    file: x,
+                                    dir: $("#working_dir").val(),
+                                    new_name: result
+                                },
+                                cache: false
+                            }).done(function (data) {
+                                if (data == "OK") {
+                                    $btnReload.trigger('click');
+                                    loadFiles();
+                                } else {
+                                    notify(data);
+                                }
+                            });
+                        }
+                    }
+                });
+            })
+            .on('click', '[data-crop]', function () {
+                var x = $(this).data('crop');
                 $.ajax({
                     type: "GET",
                     dataType: "text",
-                    url: "/admin/filemanager/delete",
-                    data: {
-                        base: $("#working_dir").val(),
-                        items: x
-                    },
+                    url: "/admin/filemanager/crop",
+                    data: "img="
+                    + x
+                    + "&dir=" + $("#working_dir").val(),
                     cache: false
                 }).done(function (data) {
-                    if (data != "OK") {
-                        notify(data);
-                    } else {
-                        loadFiles();
-                        $btnReload.trigger('click');
-                    }
+                    $("#nav-buttons").addClass('hidden');
+                    $("#content").html(data);
                 });
-            }
-        });
-    })
+            })
+            .on('click', '[data-resize]', function () {
+                var x = $(this).data('resize');
+                $.ajax({
+                    type: "GET",
+                    dataType: "text",
+                    url: "/admin/filemanager/resize",
+                    data: "img="
+                    + x
+                    + "&dir=" + $("#working_dir").val(),
+                    cache: false
+                }).done(function (data) {
+                    $("#nav-buttons").addClass('hidden');
+                    $("#content").html(data);
+                });
+            })
+            .on('click', '[data-view]', function () {
+                var x = $(this).data('view');
+                var rnd = makeRandom();
+                $('#fileview_body').html(
+                    "<img class='img img-responsive center-block' src='{{ Config::get('lfm.images_url') }}" + $("#working_dir").val() + "/" + x + "?id=" + rnd + "'>"
+                );
+                $('#fileViewModal').modal();
+            })
+            .on('click', '[data-select-file]', function () {
+                var file = $(this).data('select-file'),
+                    path = $('#working_dir').val(),
+                    reParam = new RegExp('(?:[\?&]|&)CKEditorFuncNum=([^&]+)', 'i'),
+                    match = window.location.search.match(reParam),
+                    funcNum = ( match && match.length > 1 ) ? match[1] : null,
+                    fullPath = '{{ config('filemanager.images_url') }}';
 
-    .on('click', '[data-rename]', function() {
-                var x = $(this).data('rename');
-        bootbox.prompt({
-            title: "Rename to:",
-            value: x,
-            callback: function (result) {
+                        @if ((Session::has('lfm_type')) && (Session::get('lfm_type') == "Images"))
+                var fullPath = '{{ \Config::get('lfm.images_url') }}';
+                fullPath += (path !== '/') ? path + "/" + file : file;
+                        @else
+                var fullPath = '{{ config('filemanager.files_url') }}';
+                fullPath += (path !== '/') ? path + "/" + file : file;
+                @endif
+                window.opener.CKEDITOR.tools.callFunction(funcNum, fullPath);
+                window.close();
+            });
+
+        function loadFiles() {
+            $.ajax({
+                type: "GET",
+                dataType: "html",
+                url: "/admin/filemanager/folders",
+                data: {
+                    base: $("#working_dir").val(),
+                    show_list: $("#show_list").val()
+                },
+                cache: false
+            }).done(function (data) {
+                $("#tree1").html(data);
+            });
+        }
+
+        function refreshFolders() {
+            var wd = $("#working_dir").val();
+            if (wd != "/") {
+                $('#' + wd + '-folder').removeClass('fa-folder');
+                $('#' + wd + '-folder').addClass('fa-folder-open');
+            }
+        }
+
+
+        function notImp() {
+            bootbox.alert('Not yet implemented!');
+        }
+
+        $("#add-folder").click(function () {
+            bootbox.prompt("Folder name:", function (result) {
                 if (result === null) {
                 } else {
                     $.ajax({
                         type: "GET",
                         dataType: "text",
-                        url: "/admin/filemanager/rename",
+                        url: "/admin/filemanager/newfolder",
                         data: {
-                            file: x,
-                            dir: $("#working_dir").val(),
-                            new_name: result
+                            name: result,
+                            dir: $("#working_dir").val()
                         },
                         cache: false
                     }).done(function (data) {
                         if (data == "OK") {
-                            $btnReload.trigger('click');
                             loadFiles();
+                            $btnReload.trigger('click');
+                            refreshFolders();
                         } else {
                             notify(data);
                         }
                     });
                 }
-            }
+            });
         });
-    })
-    .on('click', '[data-crop]', function() {
-        var x = $(this).data('crop');
-        $.ajax({
-            type: "GET",
-            dataType: "text",
-            url: "/admin/filemanager/crop",
-            data: "img="
-            + x
-            + "&dir=" + $("#working_dir").val(),
-            cache: false
-        }).done(function (data) {
-            $("#nav-buttons").addClass('hidden');
-            $("#content").html(data);
-        });
-    })
-    .on('click', '[data-resize]', function() {
-        var x = $(this).data('resize');
-        $.ajax({
-            type: "GET",
-            dataType: "text",
-            url: "/admin/filemanager/resize",
-            data: "img="
-            + x
-            + "&dir=" + $("#working_dir").val(),
-            cache: false
-        }).done(function (data) {
-            $("#nav-buttons").addClass('hidden');
-            $("#content").html(data);
-        });
-    })
-    .on('click', '[data-view]', function() {
-        var x = $(this).data('view');
-        var rnd = makeRandom();
-        $('#fileview_body').html(
-                "<img class='img img-responsive center-block' src='{{ Config::get('lfm.images_url') }}" + $("#working_dir").val() + "/" + x + "?id=" + rnd + "'>"
-        );
-        $('#fileViewModal').modal();
-    })
-    .on('click', '[data-select-file]', function () {
-        var file = $(this).data('select-file'),
-            path = $('#working_dir').val(),
-            reParam = new RegExp('(?:[\?&]|&)CKEditorFuncNum=([^&]+)', 'i'),
-            match = window.location.search.match(reParam),
-            funcNum = ( match && match.length > 1 ) ? match[1] : null,
-            fullPath = '{{ config('filemanager.images_url') }}';
 
-        @if ((Session::has('lfm_type')) && (Session::get('lfm_type') == "Images"))
-            var fullPath = '{{ \Config::get('lfm.images_url') }}';
-            fullPath += (path !== '/')  ? path + "/" + file : file;
-        @else
-            var fullPath = '{{ config('filemanager.files_url') }}';
-            fullPath += (path !== '/')  ? path + "/" + file : file;
-        @endif
-        window.opener.CKEDITOR.tools.callFunction(funcNum, fullPath);
-        window.close();
-    });
 
-    function loadFiles() {
-        $.ajax({
-            type: "GET",
-            dataType: "html",
-            url: "/admin/filemanager/folders",
-            data: {
-                base: $("#working_dir").val(),
-                show_list: $("#show_list").val()
-            },
-            cache: false
-        }).done(function (data) {
-            $("#tree1").html(data);
-        });
-    }
-
-    function refreshFolders(){
-        var wd = $("#working_dir").val();
-        if (wd != "/") {
-            $('#' + wd + '-folder').removeClass('fa-folder');
-            $('#' + wd + '-folder').addClass('fa-folder-open');
+        function notify(x) {
+            bootbox.alert(x);
         }
-    }
 
-
-    function notImp() {
-        bootbox.alert('Not yet implemented!');
-    }
-
-    $("#add-folder").click(function () {
-        bootbox.prompt("Folder name:", function (result) {
-            if (result === null) {
-            } else {
-                $.ajax({
-                    type: "GET",
-                    dataType: "text",
-                    url: "/admin/filemanager/newfolder",
-                    data: {
-                        name: result,
-                        dir: $("#working_dir").val()
-                    },
-                    cache: false
-                }).done(function (data) {
-                    if (data == "OK") {
-                        loadFiles();
-                        $btnReload.trigger('click');
-                        refreshFolders();
-                    } else {
-                        notify(data);
-                    }
-                });
-            }
+        $("#thumbnail-display").click(function () {
+            $("#show_list").val(0);
+            $btnReload.trigger('click');
         });
-    });
+
+        $("#list-display").click(function () {
+            $("#show_list").val(1);
+            $btnReload.trigger('click');
+        });
 
 
-    function notify(x) {
-        bootbox.alert(x);
-    }
+        function makeRandom() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    $("#thumbnail-display").click(function () {
-        $("#show_list").val(0);
+            for (var i = 0; i < 20; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }
+
+        refreshFolders();
         $btnReload.trigger('click');
-    });
-
-    $("#list-display").click(function () {
-        $("#show_list").val(1);
-        $btnReload.trigger('click');
-    });
-
-
-    function makeRandom()
-    {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for( var i=0; i < 20; i++ )
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        return text;
-    }
-
-    refreshFolders();
-    $btnReload.trigger('click');
 
     })
 </script>
