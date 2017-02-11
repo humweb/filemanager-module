@@ -34,7 +34,7 @@
 
                 <div class="col-sm-4 col-md-2 img-row">
 
-                    <div class="thumbnail thumbnail-img text-center" style="border: none;" data-id="{{ basename($file['name']) }}" id="img_thumbnail_{{ $key }}">
+                    <div class="thumbnail thumbnail-img text-center" style="border: none;" data-select-file="{{ basename($file['name']) }}" data-id="{{ basename($file['name']) }}" id="img_thumbnail_{{ $key }}">
                         <i class="fa <?= $file['icon']; ?> fa-5x"></i>
                     </div>
 

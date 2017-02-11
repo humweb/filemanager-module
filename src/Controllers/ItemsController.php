@@ -164,13 +164,13 @@ class ItemsController extends AdminController
         }
 
         if (Input::get('show_list') == 1) {
-            return View::make('lfm.images-list')
+            return View::make('filemanager::admin.images-list')
                        ->with('directories', $directories)
                        ->with('base', Input::get('base'))
                        ->with('file_info', $file_info)
                        ->with('dir_location', $dir_location);
         } else {
-            return View::make('lfm.images')
+            return View::make('filemanager::admin.images')
                        ->with('files', $files)
                        ->with('directories', $directories)
                        ->with('base', Input::get('base'))

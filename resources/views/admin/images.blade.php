@@ -8,7 +8,6 @@
                     <div class="thumbnail text-center" data-id="{{ basename($dir) }}">
                         <a id="large_folder_{{ $key }}" data-folder="large_folder_{{ $key }}" data-id="{{ $dir }}"
                            class="folder-icon pointer">
-                            {{--<i class="fa fa-folder-o fa-5x"></i>--}}
                             <img src="/img/folder.jpg">
                         </a>
                     </div>

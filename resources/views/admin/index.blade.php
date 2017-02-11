@@ -96,8 +96,8 @@
                 <h4 class="modal-title" id="myModalLabel">Upload File</h4>
             </div>
             <div class="modal-body">
-                {{ Form::open(array('url' => '/admin/filemanager/upload', 'role' => 'form', 'name' => 'uploadForm',
-                'id' => 'uploadForm', 'method' => 'post', 'enctype' => 'multipart/form-data')) }}
+                {{ Form::open(['url' => '/admin/filemanager/upload', 'role' => 'form', 'name' => 'uploadForm',
+                'id' => 'uploadForm', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
                 <div class="form-group" id="attachment">
                     {{ Form::label('file_to_upload', 'Choose File', array('class' => 'control-label')) }}
                     <div class="controls">
@@ -139,7 +139,6 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.js"></script>
-{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>--}}
 <script src="{{ asset('vendor/filemanager/js/cropper.min.js') }}"></script>
 <script src="/vendor/filemanager/js/jquery.form.min.js"></script>
 <script>
@@ -208,7 +207,7 @@
                 location.href = "/admin/filemanager/download?dir=" + $("#working_dir").val() + "&file=" + $(this).data('download');
             })
 
-            @if ((Session::has('lfm_type')) && (Session::get('lfm_type') == "Images"))
+            @if (($file_type == "images"))
                 .on('click', '.reload-files', function () {
             console.log('REALODING!!!');
             $.ajax({

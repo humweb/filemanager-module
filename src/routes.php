@@ -30,34 +30,34 @@ Route::group(['prefix' => 'admin/filemanager', 'middleware' => 'auth'], function
         'uses' => 'UploadController@upload',
     ]);
 
-        //    Route::controller('', 'ApiController');
-        //
-        //    // Upload
-        //    Route::any('/upload', 'UploadController@upload');
-        //
-        //    // List images & files
-            Route::get('/jsonimages', 'ItemsController@getImages');
-            Route::get('/jsonfiles', 'ItemsController@getFiles');
-        //
-        //    // folders
-        //    Route::get('/newfolder', 'FolderController@getAddfolder');
-        //    Route::get('/deletefolder', 'FolderController@getDeletefolder');
-        //    Route::get('/folders', 'FolderController@getFolders');
-        //
-        //    // crop
-        //    Route::get('/crop', 'CropController@getCrop');
-        //    Route::get('/cropimage', 'CropController@getCropimage');
-        //
-        //    // rename
-        //    Route::get('/rename', 'RenameController@getRename');
-        //
-        //    // scale/resize
-        //    Route::get('/resize', 'ResizeController@getResize');
-        //    Route::get('/doresize', 'ResizeController@performResize');
-        //
-        //    // download
-        //    Route::get('/download', 'DownloadController@getDownload');
-        //
-        //    // delete
-        //    Route::get('/delete', 'DeleteController@getDelete');
-    });
+    //    Route::controller('', 'ApiController');
+    //
+    //    // Upload
+    //    Route::any('/upload', 'UploadController@upload');
+    //
+    //    // List images & files
+    Route::get('/jsonimages', 'ItemsController@getImages');
+    Route::get('/jsonfiles', 'ItemsController@getFiles');
+    //
+    //    // folders
+    //    Route::get('/newfolder', 'FolderController@getAddfolder');
+    //    Route::get('/deletefolder', 'FolderController@getDeletefolder');
+    //    Route::get('/folders', 'FolderController@getFolders');
+    //
+    //    // crop
+    //    Route::get('/crop', 'CropController@getCrop');
+    //    Route::get('/cropimage', 'CropController@getCropimage');
+    //
+    //    // rename
+    //    Route::get('/rename', 'RenameController@getRename');
+    //
+    //    // scale/resize
+    //    Route::get('/resize', 'ResizeController@getResize');
+    //    Route::get('/doresize', 'ResizeController@performResize');
+    //
+    //    // download
+    //    Route::get('/download', 'DownloadController@getDownload');
+    //
+    //    // delete
+    //    Route::get('/delete', 'DeleteController@getDelete');
+});
