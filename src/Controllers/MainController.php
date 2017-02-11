@@ -42,6 +42,7 @@ class MainController extends AdminController
         }
 
         return view('filemanager::admin.index', [
+            'file_type' => $request->get('type','images'),
             'base'        => $base,
             'working_dir' => $working_dir
         ]);
