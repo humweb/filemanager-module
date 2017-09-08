@@ -13,10 +13,10 @@
                     </div>
                     <div class="caption text-center">
                         <div class="btn-group">
-                            <button type="button" class="action-folder btn btn-default btn-xs">
+                            <button type="button" class="action-folder btn btn-secondary btn-xs">
                                 {{ str_limit(basename($dir), $limit = 10, $end = '...') }}
                             </button>
-                            <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+                            <button type="button" class="btn btn-secondary dropdown-toggle btn-xs" data-toggle="dropdown">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
@@ -40,7 +40,7 @@
 
                     <div class="caption text-center">
                         <div class="btn-group ">
-                            <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+                            <button type="button" class="btn btn-secondary dropdown-toggle btn-xs" data-toggle="dropdown">
                                 {{ str_limit(basename($file['name'])) }} <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>

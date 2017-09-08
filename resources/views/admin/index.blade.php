@@ -12,17 +12,17 @@
 <body>
 <div class="container">
     <div class="row fill">
-        <div class="panel panel-default fill">
-            <div class="panel-heading">
-                <h3 class="panel-title">FileManager</h3>
+        <div class="card card-default fill">
+            <div class="card-header">
+                <h3 class="card-title">FileManager</h3>
             </div>
-            <div class="panel-body fill">
+            <div class="card-body fill">
                 <div class="row fill">
                     <div class="wrapper fill">
                         <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 left-nav fill" id="lfm-leftcol">
                             <div id="tree1">
                             </div>
-                            <a href="#!" id="add-folder" class="add-folder btn btn-default btn-xs"><i class="fa fa-plus"></i> {{ trans('filemanager::labels.new_folder') }}
+                            <a href="#!" id="add-folder" class="add-folder btn btn-secondary btn-xs"><i class="fa fa-plus"></i> {{ trans('filemanager::labels.new_folder') }}
                             </a>
                         </div>
                         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 right-nav" id="right-nav">
@@ -111,7 +111,7 @@
                 {{ Form::close() }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="upload-btn">Upload File</button>
             </div>
         </div>
@@ -130,7 +130,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

@@ -14,10 +14,10 @@
                     <div class="caption text-center">
                         <div class="btn-group">
                             <button type="button" data-folder="large_folder_{{ $key }}"
-                                    class="btn btn-default btn-xs folder-open">
+                                    class="btn btn-secondary btn-xs folder-open">
                                 {{ str_limit(basename($dir), $limit = 10, $end = '...') }}
                             </button>
-                            <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"
+                            <button type="button" class="btn btn-secondary dropdown-toggle btn-xs" data-toggle="dropdown"
                                     aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -44,7 +44,7 @@
 
                     <div class="caption text-center">
                         <div class="btn-group ">
-                            <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown"
+                            <button type="button" class="btn btn-secondary dropdown-toggle btn-xs" data-toggle="dropdown"
                                     aria-expanded="false">
                                 Actions
                                 <span class="caret"></span>
