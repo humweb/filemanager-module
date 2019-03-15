@@ -2,7 +2,7 @@
 
 namespace Humweb\Filemanager\Controllers;
 
-use App\Http\Controllers\AdminController;
+use Humweb\Core\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
